@@ -4,7 +4,6 @@
 Questions regarding the density of accidents by district or by coordinates:
 * Which is the density of accidents?
 * Is the population density a dependent variable?
-* Is the rent per capita a dependent variable?
 * Are the pedestrian accidents equally distributed?
 
 Questions regarding the population distribution on accidents (by gender and age):
