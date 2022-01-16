@@ -2,6 +2,7 @@ library(shiny)
 library(tmap)
 library(dplyr)
 library(tidyverse)
+library(rgdal)
 
 ui <- fluidPage(
   titlePanel("Accidents by districts"),
