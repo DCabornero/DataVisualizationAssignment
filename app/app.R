@@ -4,13 +4,14 @@ library(dplyr)
 library(tidyverse)
 library(rgdal)
 library(ggstream)
+library(leaflet)
 
 ui <- fluidPage(
   titlePanel("Accidents by districts"),
   # Districts
   fluidRow(
     # First parameter is the length (maximum: 12)
-    column(6,
+    column(4, offset=1,
       helpText("Create density maps that distributes accidents by districts."),
       
       selectInput("victims1", 
@@ -25,12 +26,12 @@ ui <- fluidPage(
                   label = "Number of accidents",
                   choices = c("Per Capita", 
                               "Total amount"),
-                  selected = "Total amount"),
-      tmapOutput('map1')
+                  selected = "Total amount")
+      
     ),
     
     
-    column(6,
+    column(4, offset=2,
            helpText("Create density maps that distributes accidents by districts."),
            
            selectInput("victims2", 
@@ -45,10 +46,12 @@ ui <- fluidPage(
                        label = "Number of accidents",
                        choices = c("Per Capita", 
                                    "Total amount"),
-                       selected = "Total amount"),
-           tmapOutput('map2')
+                       selected = "Total amount")
     )
   ),
+  
+  column(6, tmapOutput('map1')),
+  column(6, tmapOutput('map2')),
   
   # Cluster map
   titlePanel("Sort accidents by clusters"),
@@ -70,9 +73,9 @@ ui <- fluidPage(
            checkboxGroupInput(
              "checkbox",
              "Weather selected",
-             choices = c("Despejado","Granizado","Lluvia débil","LLuvia intensa",
-                        "Nublado", "Se desconoce"),
-             selected = c("Despejado","Nublado")
+             choices = c("Clear","Hailing","Light rain","Heavy rain",
+                        "Cloudy", "Unknown"),
+             selected = c("Clear","Cloudy")
            ),
            plotOutput("stream"))
   )
